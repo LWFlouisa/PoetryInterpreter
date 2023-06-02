@@ -70,14 +70,14 @@ ran_6 = rand(8) % 12
 ran_7 = rand(8) % 12
 ran_8 = rand(8) % 12
 
-poem1 = File.readlines("_poetry/hafestranfolksong.txt")
-poem2 = File.readlines("_poetry/ravenrose.txt")
-poem3 = File.readlines("_poetry/seguidilladiishamisen.txt")
-poem4 = File.readlines("_poetry/selfdoubt.txt")
-poem5 = File.readlines("_poetry/anthemadiihafestra.txt")
+poem1 = File.readlines("_poetry/anthemadiihafestra.txt")
+poem2 = File.readlines("_poetry/disillussionmusicbox.txt")
+poem3 = File.readlines("_poetry/fromglasstograss.txt")
+poem4 = File.readlines("_poetry/midnightsunset.txt")
+poem5 = File.readlines("_poetry/ravenrose.txt")
 poem6 = File.readlines("_poetry/fromglasstograss.txt")
-poem7 = File.readlines("_poetry/midnightsunset.txt")
-poem8 = File.readlines("_poetry/disillussionmusicbox.txt")
+poem7 = File.readlines("_poetry/seguidilladiishamisen.txt")
+poem8 = File.readlines("_poetry/anthemadiihafestra.txt")
 
 line_1 = poem1[ran_1]
 line_2 = poem2[ran_2]
@@ -94,11 +94,18 @@ line_list = [ line_1, line_2,
               line_7, line_8,
             ]
 
-random_line = line_list
+#random_line = line_list.sample.strip
+# indicator_line = indicator_lines.sample
+
+#puts "#{random_line} #{indicator_line}"
 
 15.times do
-  input = random_line.sample
-  indicator_line = indicator_lines.sample
+  random_line = line_list.sample.strip
+
+  input = random_line
+  indicator_line = indicator_lines.sample.strip
+
+  print "Random Line: #{input} Indicator: #{indicator_line}"
 
   if input == indicator_line
      if    input ==  indicator_lines[0]; system("swipl interpret_anthem.pl")
@@ -216,7 +223,7 @@ random_line = line_list
        system("swipl interpret_anthem.pl")
      end
   else
-    puts "Cannot identify this signal..."
+    puts "Moving to next line..."
 
     sleep(1)
   end
